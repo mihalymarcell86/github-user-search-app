@@ -1,0 +1,311 @@
+@use "utilities/global" as *;
+
+@include setup;
+
+:root {
+  --clr-bg-body: hsl(227, 100%, 98%);
+  --clr-bg-content: hsl(0, 0%, 100%);
+  --clr-heading: hsl(220, 18%, 16%);
+  --clr-switch: hsl(217, 35%, 45%);
+  --clr-text: hsl(217, 35%, 45%);
+  --clr-bg-button: hsl(212, 100%, 50%);
+  --clr-text-button: hsl(0, 0%, 100%);
+}
+
+body {
+  font-family: $font;
+
+  background-color: var(--clr-bg-body);
+  padding: 31px 10px 0;
+  @media (min-width: 330px) {
+    padding-inline: 24px;
+  }
+  @media (min-width: 768px) {
+    padding-top: div(140, 1024) * 100vh;
+  }
+  @media (min-width: $br-desktop) {
+    padding-top: div(144, 900) * 100vh;
+  }
+}
+
+a {
+  &:any-link {
+    text-decoration: none;
+    color: var(--clr-text);
+  }
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto 36px;
+  max-width: 365px;
+  @media (min-width: $br-tablet) {
+    max-width: 573px;
+  }
+  @media (min-width: $br-desktop) {
+    max-width: 730px;
+  }
+}
+
+.devfinder-logo {
+  @include setFont(rem(26px), 39px, 700);
+  color: var(--clr-heading);
+}
+
+.light-switch {
+  @include setFont(rem(13px), 19px, 700);
+  color: var(--clr-switch);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.search-bar {
+  background-color: var(--clr-bg-content);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 7px;
+  box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.198567);
+  border-radius: 15px;
+  margin: 0 auto 16px;
+  max-width: 365px;
+
+  @media (min-width: $br-tablet) {
+    max-width: 573px;
+    padding: 9.5px 10px;
+    margin-bottom: 24px;
+  }
+  @media (min-width: $br-desktop) {
+    max-width: 730px;
+  }
+}
+
+.search-bar__icon {
+  width: rem(20px);
+  height: rem(20.05px);
+  margin-left: 9px;
+  @media (min-width: $br-tablet) {
+    width: rem(24px);
+    height: rem(24px);
+    margin-left: 22px;
+  }
+}
+
+.search-bar__input {
+  @include setFont(rem(13px), 25px, 400);
+  color: var(--clr-heading);
+  border: 0;
+  margin-left: 9px;
+  margin-right: 7px;
+  width: 100%;
+  font-family: $font;
+  caret-color: var(--clr-bg-button);
+  &:focus {
+    outline: 0;
+  }
+  &::placeholder {
+    color: var(--clr-text);
+  }
+  @media (min-width: $br-tablet) {
+    font-size: rem(18px);
+    margin-left: 24px;
+  }
+}
+
+.search-bar__button {
+  border: 0;
+  font-family: $font;
+  background-color: var(--clr-bg-button);
+  color: var(--clr-text-button);
+  @include setFont(rem(14px), 21px, 700);
+  padding: em(12.5px, 14px) em(16px, 14px);
+  border-radius: 10px;
+  cursor: pointer;
+  @media (min-width: $br-tablet) {
+    @include setFont(rem(16px), 24px);
+    padding: em(13px, 16px) em(23px, 16px);
+  }
+}
+
+.search-result {
+  background-color: var(--clr-bg-content);
+  box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.198567);
+  border-radius: 15px;
+  padding: 32px 24px 48px;
+  color: var(--clr-text);
+  position: relative;
+  font-size: 0;
+  max-width: 365px;
+  margin: 0 auto;
+  @media (min-width: $br-tablet) {
+    max-width: 573px;
+
+    padding: 40px;
+  }
+  @media (min-width: $br-desktop) {
+    padding: 48px;
+    padding-left: 202px;
+    max-width: 730px;
+  }
+}
+
+.result__header {
+  display: inline-flex;
+  flex-direction: column;
+  vertical-align: top;
+  margin-left: 19px;
+  @media (min-width: $br-tablet) {
+    margin-left: 41px;
+  }
+  @media (min-width: $br-desktop) {
+    display: inline-grid;
+    width: 100%;
+    grid-template: repeat(2, max-content) / repeat(2, 1fr);
+    grid-auto-flow: column;
+    align-items: center;
+    margin: 0;
+    margin-bottom: 20px;
+  }
+}
+
+.result__avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  margin-bottom: 33px;
+  @media (min-width: $br-tablet) {
+    width: 117px;
+    height: 117px;
+    margin-bottom: 24px;
+  }
+  @media (min-width: $br-desktop) {
+    position: absolute;
+    left: 48px;
+  }
+}
+
+.result__name {
+  color: var(--clr-heading);
+  @include setFont(rem(16px), 24px, 700);
+  @media (min-width: $br-tablet) {
+    @include setFont(rem(26px), 39px);
+    margin-bottom: em(2px, 26px);
+  }
+}
+
+.result__login {
+  color: var(--clr-bg-button);
+  @include setFont(rem(13px), 19px, 400);
+  margin-bottom: em(6px, 13px);
+  @media (min-width: $br-tablet) {
+    @include setFont(rem(16px), 24px, 400);
+    margin-bottom: em(2px, 16px);
+  }
+}
+
+.result__joined {
+  @include setFont(rem(13px), 19px, 400);
+  @media (min-width: $br-tablet) {
+    @include setFont(rem(15px), 22px);
+  }
+  @media (min-width: $br-desktop) {
+    text-align: right;
+  }
+}
+
+//OK
+
+.result__bio {
+  @include setFont(rem(13px), 25px, 400);
+  margin-bottom: em(23px, 13px);
+  @media (min-width: $br-tablet) {
+    font-size: rem(15px);
+    margin-bottom: em(32px, 15px);
+  }
+}
+
+.bio--na {
+  opacity: 0.75;
+}
+
+.result__stats {
+  background-color: var(--clr-bg-body);
+  width: 100%;
+  padding: 18px 15px;
+  border-radius: 10px;
+  margin-bottom: 24px;
+  text-align: center;
+  display: grid;
+  grid-template: repeat(2, 1fr) / repeat(3, 1fr);
+  @media (min-width: $br-tablet) {
+    grid-template: repeat(2, 1fr) / repeat(3, min-content);
+    width: 100%;
+    justify-content: space-between;
+    padding: 15px 96px 17px 32px;
+    text-align: left;
+    margin-bottom: 30px;
+  }
+  @media (min-width: $br-desktop) {
+    padding: 15px 83px 17px 32px;
+    margin-bottom: 37px;
+  }
+}
+
+.stats__header {
+  @include setFont(rem(11px), 16px, 400);
+  @media (min-width: $br-tablet) {
+    @include setFont(rem(13px), 19px);
+    max-width: 365px;
+  }
+}
+
+.stats__data {
+  @include setFont(rem(16px), 24px, 700);
+  color: var(--clr-heading);
+  @media (min-width: $br-tablet) {
+    @include setFont(rem(22px), 33px);
+  }
+}
+
+.result__info {
+  @media (min-width: $br-tablet) {
+    display: grid;
+    grid-template: repeat(2, 1fr) / repeat(2, max-content);
+    grid-auto-flow: column;
+    gap: 19px 65px;
+  }
+}
+
+.info__row {
+  @include setFont(rem(13px), 19px, 400);
+  display: flex;
+  align-items: center;
+  &:not(:last-child) {
+    margin-bottom: 16px;
+  }
+  @media (min-width: $br-tablet) {
+    @include setFont(rem(15px), 22px);
+    &:not(:last-child) {
+      margin: 0;
+    }
+  }
+}
+
+.info__icon {
+  width: 33px;
+  height: 20px;
+  @media (min-width: $br-tablet) {
+    width: 36px;
+  }
+}
+
+.info--na {
+  opacity: 0.5;
+}

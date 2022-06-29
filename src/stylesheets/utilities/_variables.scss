@@ -1,0 +1,20 @@
+@use "sass:math";
+
+$REM: 15;
+$br-tablet: 560px;
+$br-desktop: 900px;
+
+$font: "Space Mono", monospace;
+
+$colors: (
+  azure: hsl(212, 100%, 50%),
+  white: hsl(0, 0%, 100%),
+  //LIGHT MODE
+  slate-gray: hsl(217, 20%, 51%),
+  queen-blue: hsl(217, 35%, 45%),
+  gunmetal: hsl(217, 35%, 45%),
+  ghost-white: hsl(227, 100%, 98%),
+  //DARK MODE
+  dark-gunmetal: hsl(220, 40%, 13%),
+  yankees-blue: hsl(222, 41%, 20%),
+);
