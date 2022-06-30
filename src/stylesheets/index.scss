@@ -2,29 +2,44 @@
 
 @include setup;
 
-:root {
+html {
   --clr-bg-body: hsl(227, 100%, 98%);
   --clr-bg-content: hsl(0, 0%, 100%);
   --clr-heading: hsl(220, 18%, 16%);
-  --clr-switch: hsl(217, 35%, 45%);
+  --clr-joined: hsl(217, 20%, 51%);
   --clr-text: hsl(217, 35%, 45%);
   --clr-bg-button: hsl(212, 100%, 50%);
   --clr-text-button: hsl(0, 0%, 100%);
 }
 
+html.dark {
+  --clr-bg-body: hsl(220, 40%, 13%);
+  --clr-bg-content: hsl(222, 41%, 20%);
+  --clr-heading: hsl(0, 0%, 100%);
+  --clr-joined: hsl(0, 0%, 100%);
+  --clr-text: hsl(0, 0%, 100%);
+}
+
+html.dark .search-bar,
+html.dark .search-result {
+  box-shadow: none;
+}
+
 body {
   font-family: $font;
-
+  min-height: 100vh;
   background-color: var(--clr-bg-body);
-  padding: 31px 10px 0;
+  padding: div(31, 777) * 100vh 10px div(79, 777) * 100vh;
   @media (min-width: 330px) {
     padding-inline: 24px;
   }
   @media (min-width: 768px) {
     padding-top: div(140, 1024) * 100vh;
+    padding-bottom: div(236, 1024) * 100vh;
   }
   @media (min-width: $br-desktop) {
     padding-top: div(144, 900) * 100vh;
+    padding-bottom: div(145, 900) * 100vh;
   }
 }
 
@@ -59,11 +74,12 @@ a {
 
 .light-switch {
   @include setFont(rem(13px), 19px, 700);
-  color: var(--clr-switch);
+  color: var(--clr-text);
   text-transform: uppercase;
   display: flex;
   align-items: center;
   gap: 16px;
+  cursor: pointer;
 }
 
 .search-bar {
@@ -72,11 +88,10 @@ a {
   display: flex;
   align-items: center;
   padding: 7px;
-  box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.198567);
   border-radius: 15px;
   margin: 0 auto 16px;
   max-width: 365px;
-
+  box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.198567);
   @media (min-width: $br-tablet) {
     max-width: 573px;
     padding: 9.5px 10px;
@@ -101,6 +116,7 @@ a {
 .search-bar__input {
   @include setFont(rem(13px), 25px, 400);
   color: var(--clr-heading);
+  background-color: var(--clr-bg-content);
   border: 0;
   margin-left: 9px;
   margin-right: 7px;
@@ -112,6 +128,7 @@ a {
   }
   &::placeholder {
     color: var(--clr-text);
+    opacity: 1;
   }
   @media (min-width: $br-tablet) {
     font-size: rem(18px);
@@ -146,7 +163,6 @@ a {
   margin: 0 auto;
   @media (min-width: $br-tablet) {
     max-width: 573px;
-
     padding: 40px;
   }
   @media (min-width: $br-desktop) {
@@ -212,6 +228,7 @@ a {
 
 .result__joined {
   @include setFont(rem(13px), 19px, 400);
+  color: var(--clr-joined);
   @media (min-width: $br-tablet) {
     @include setFont(rem(15px), 22px);
   }
@@ -219,8 +236,6 @@ a {
     text-align: right;
   }
 }
-
-//OK
 
 .result__bio {
   @include setFont(rem(13px), 25px, 400);
@@ -285,10 +300,14 @@ a {
 
 .info__row {
   @include setFont(rem(13px), 19px, 400);
+  color: var(--clr-text);
   display: flex;
   align-items: center;
   &:not(:last-child) {
     margin-bottom: 16px;
+  }
+  object {
+    color: var(--clr-text);
   }
   @media (min-width: $br-tablet) {
     @include setFont(rem(15px), 22px);
