@@ -163,7 +163,6 @@ a {
 .search-bar__error {
   @include setFont(rem(15px), 22px, 700);
   color: hsla(0, 91%, 62%, 1);
-  // background-color: var(--clr-bg-content);
   background-image: linear-gradient(
     to right,
     transparent 0%,
@@ -285,9 +284,11 @@ a {
   margin-bottom: 24px;
   text-align: center;
   display: grid;
-  grid-template: repeat(2, 1fr) / repeat(3, 1fr);
+  grid-template: repeat(2, min-content) / repeat(3, 1fr);
+  row-gap: 8px;
   @media (min-width: $br-tablet) {
-    grid-template: repeat(2, 1fr) / repeat(3, min-content);
+    grid-template: repeat(2, min-content) / repeat(3, min-content);
+    row-gap: 1px;
     width: 100%;
     justify-content: space-between;
     padding: 15px 96px 17px 32px;

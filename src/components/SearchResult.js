@@ -4,7 +4,7 @@ export default function SearchResult({ data }) {
   }).format(new Date(data.created_at));
 
   return (
-    <section className="search-result">
+    <div className="search-result">
       <img src={data.avatar_url} alt="" className="result__avatar" />
 
       <div className="result__header">
@@ -26,7 +26,7 @@ export default function SearchResult({ data }) {
         <div className="stats__data">{data.following}</div>
       </div>
 
-      <section className="result__info">
+      <div className="result__info">
         <div className={`info__row ${!data.location ? "info--na" : ""}`}>
           <svg
             height="20"
@@ -122,7 +122,7 @@ export default function SearchResult({ data }) {
             <p>Not Available</p>
           )}
         </div>
-      </section>
-    </section>
+      </div>
+    </div>
   );
 }

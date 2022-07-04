@@ -11,10 +11,9 @@ export default function SearchBar(props) {
 
   return (
     <form className="search-bar" onSubmit={handleSubmit}>
-      <object
-        type="image/svg+xml"
-        data={searchIcon}
-        aria-label="search"
+      <img
+        src={searchIcon}
+        alt="search github username"
         className="search-bar__icon"
       />
       <input
