@@ -1,20 +1,16 @@
 import searchIcon from "../assets/icon-search.svg";
-import { useState } from "react";
 
 export default function SearchBar(props) {
-  const [input, setInput] = useState("");
-
   function handleSubmit(event) {
     event.preventDefault();
   }
 
   function changeInput({ target }) {
-    setInput(target.value);
+    props.onChange(target.value);
   }
 
   return (
     <form className="search-bar" onSubmit={handleSubmit}>
-      {/* <img src={searchIcon} alt="" className="search-bar__icon" /> */}
       <object
         type="image/svg+xml"
         data={searchIcon}
@@ -25,13 +21,11 @@ export default function SearchBar(props) {
         type="text"
         placeholder="Search GitHub username…"
         className="search-bar__input"
-        value={input}
+        value={props.input}
         onChange={changeInput}
       />
-      <button
-        className="search-bar__button"
-        onClick={() => props.searchUser(input)}
-      >
+      {props.notFound && <div className="search-bar__error">No results</div>}
+      <button className="search-bar__button" onClick={props.onSearch}>
         Search
       </button>
     </form>
